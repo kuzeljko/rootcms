@@ -34,21 +34,20 @@ class RootCmsAuthController extends AbstractActionController
     
     /**
      * Login.
-     * @return ViewModel
      */
-    public function validateAction()
+    public function loginAction()
     {
         $request = $this->getRequest();
         if($request->isPost()) {
             $params = $request->getPost();    
             
             if ($this->login($params['username'], $params['password'])) {
-                return new ViewModel(['message' => ' Ok.']);
+                $this->redirect()->toRoute('home');
             } else {
-                return new ViewModel(['message' => ' Fail.']);
+                $this->redirect()->toRoute('auth');
             }
         }
-        return new ViewModel(['message' => 'Username not checked']);
+        $this->redirect()->toRoute('home');
     }
     
     /**
@@ -64,4 +63,14 @@ class RootCmsAuthController extends AbstractActionController
         $result = $this->authService->authenticate();
         return $result->isValid();
     }
+    
+    /**
+     * Logout.
+     */
+    public function logoutAction()
+    {
+        $this->authService->clearIdentity();
+        $this->redirect()->toRoute('home');
+    }
+    
 }

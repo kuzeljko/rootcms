@@ -18,10 +18,10 @@ return [
     ],
     'router' => [
         'routes' => [
-            'login' => [
+            'auth' => [
                 'type' => Literal::class,
                 'options' => [
-                    'route' => '/login',
+                    'route' => '/auth',
                     'defaults' => [
                         'controller' => Controller\RootCmsAuthController::class,
                         'action' => 'index',
@@ -29,14 +29,25 @@ return [
                 ],
                 'may_terminate' => true,
                 'child_routes' => [
-                    'validate' => [
+                    'login' => [
                         'type' => Literal::class,
                         'options' => [
-                            'route' => '/validate',
+                            'route' => '/login',
                             'defaults' => [
-                                'action' => 'validate',
+                                'action' => 'login',
                             ],
-                        ]
+                        ],
+                        'may_terminate' => true,
+                    ],
+                    'logout' => [
+                        'type' => Literal::class,
+                        'options' => [
+                            'route' => '/logout',
+                            'defaults' => [
+                                'action' => 'logout',
+                            ],
+                        ],
+                        'may_terminate' => true,
                     ],
                 ],
             ],
@@ -47,8 +58,7 @@ return [
             __DIR__ . '/../view',
         ],
         'template_map' => [
-            'root-cms-auth/root-cms-auth/index' => __DIR__ . '/../view/root-cms-auth/login/index.phtml',
-            'root-cms-auth/root-cms-auth/validate' => __DIR__ . '/../view/root-cms-auth/login/validate.phtml',
+            'root-cms-auth/root-cms-auth/index' => __DIR__ . '/../view/root-cms-auth/auth/index.phtml',
         ],
     ],
     'service_manager' => [
