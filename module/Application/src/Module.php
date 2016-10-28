@@ -24,8 +24,6 @@ class Module
         $viewModel = $e->getApplication()->getMvcEvent()->getViewModel();
 
         $authService = $serviceManager->get('auth-service');
-//        $identity =  $authService->getIdentity();
-//        $this->layout()->setVariable('identity', $identity);
 
         $viewModel->identity = $authService->getIdentity();
 
