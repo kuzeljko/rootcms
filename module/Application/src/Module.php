@@ -7,6 +7,8 @@
 
 namespace Application;
 use Zend\Mvc\MvcEvent;
+use Zend\View\Resolver\TemplateMapResolver;
+use Zend\View\Resolver\TemplatePathStack;
 
 
 class Module
@@ -20,13 +22,14 @@ class Module
     
     public function onBootstrap($e) {
 
+        // pass identity info to layout
         $serviceManager = $e->getApplication()->getServiceManager();
         $viewModel = $e->getApplication()->getMvcEvent()->getViewModel();
-
         $authService = $serviceManager->get('auth-service');
-
         $viewModel->identity = $authService->getIdentity();
 
+        // dynamically load themes (layout, scripts)
+        
     }
 
 

@@ -48,13 +48,13 @@ return [
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
         'template_map' => [
-            'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-            'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
-            'error/404'               => __DIR__ . '/../view/error/404.phtml',
-            'error/index'             => __DIR__ . '/../view/error/index.phtml',
+            'layout/layout'           => getcwd() . '/themes/default/view/layout/layout.phtml',
+            'application/index/index' => getcwd() . '/themes/default/view/application/index/index.phtml',
+            'error/404'               => getcwd() . '/themes/default/view/error/404.phtml',
+            'error/index'             => getcwd() . '/themes/default/view/error/index.phtml',
         ],
         'template_path_stack' => [
-            __DIR__ . '/../view',
+            getcwd() . '/themes/default/view',
         ],
     ],
 ];
