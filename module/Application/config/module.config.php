@@ -47,14 +47,17 @@ return [
         'doctype'                  => 'HTML5',
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
-        'template_map' => [
-            'layout/layout'           => getcwd() . '/public/themes/default/view/layout/layout.phtml',
-            'application/index/index' => getcwd() . '/public/themes/default/view/application/index/index.phtml',
-            'error/404'               => getcwd() . '/public/themes/default/view/error/404.phtml',
-            'error/index'             => getcwd() . '/public/themes/default/view/error/index.phtml',
-        ],
+        
+        // define here which theme is being used:
+        'base_path' => 'themes/'. \Application\Module::CURRENT_THEME.'/',
         'template_path_stack' => [
-            getcwd() . '/public/themes/default/view',
+            'application' => getcwd() . '/public/themes/'.\Application\Module::CURRENT_THEME.'/view',
+        ],
+        'template_map' => [
+            'layout/layout'           => getcwd() . '/public/themes/'.\Application\Module::CURRENT_THEME.'/view/layout/layout.phtml',
+            'application/index/index' => getcwd() . '/public/themes/'.\Application\Module::CURRENT_THEME.'/view/application/index/index.phtml',
+            'error/404'               => getcwd() . '/public/themes/'.\Application\Module::CURRENT_THEME.'/view/error/404.phtml',
+            'error/index'             => getcwd() . '/public/themes/'.\Application\Module::CURRENT_THEME.'/view/error/index.phtml',
         ],
     ],
 ];

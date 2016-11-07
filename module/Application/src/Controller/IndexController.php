@@ -21,7 +21,7 @@ class IndexController extends AbstractActionController
         
         $viewModel = new ViewModel([
             'identity' => $authService->getIdentity(),
-            'theme_path' => getcwd() . '/themes/blue/'
+//            'theme_path' => getcwd() . '/themes/blue/'
         ]);
         
         return $viewModel;

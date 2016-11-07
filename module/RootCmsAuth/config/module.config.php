@@ -3,13 +3,12 @@
 namespace RootCmsAuth;
 
 use Zend\Router\Http\Literal;
-use Zend\ServiceManager\Factory\InvokableFactory;
 use RootCmsAuth\Controller\RootCmsAuthController;
 
 return [
     'controllers' => [
         'factories' => [
-            Controller\RootCmsAuthController::class => //-InvokableFactory::class,
+            Controller\RootCmsAuthController::class => 
             function($container) {
                     $serv = $container->get('auth-service');
                     return new RootCmsAuthController($serv);
@@ -53,12 +52,10 @@ return [
             ],
         ],
     ],
+                        
     'view_manager' => [
         'template_map' => [
-            'root-cms-auth/root-cms-auth/index' => getcwd() . '/public/themes/default/view/root-cms-auth/auth/index.phtml',
-        ],
-        'template_path_stack' => [
-            getcwd() . '/public/themes/default/view',
+            'root-cms-auth/root-cms-auth/index' => getcwd() . '/public/themes/'.\Application\Module::CURRENT_THEME.'/view/root-cms-auth/auth/index.phtml',
         ],
     ],
     'service_manager' => [
