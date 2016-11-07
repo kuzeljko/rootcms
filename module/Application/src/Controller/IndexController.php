@@ -19,6 +19,11 @@ class IndexController extends AbstractActionController
         $serviceManager = $this->getEvent()->getApplication()->getServiceManager();
         $authService = $serviceManager->get('auth-service');
         
-        return new ViewModel(['identity' => $authService->getIdentity()]);
+        $viewModel = new ViewModel([
+            'identity' => $authService->getIdentity(),
+            'theme_path' => getcwd() . '/themes/blue/'
+        ]);
+        
+        return $viewModel;
     }
 }

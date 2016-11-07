@@ -55,10 +55,10 @@ return [
     ],
     'view_manager' => [
         'template_map' => [
-            'root-cms-auth/root-cms-auth/index' => getcwd() . '/themes/default/view/root-cms-auth/auth/index.phtml',
+            'root-cms-auth/root-cms-auth/index' => getcwd() . '/public/themes/default/view/root-cms-auth/auth/index.phtml',
         ],
         'template_path_stack' => [
-            getcwd() . '/themes/default/view',
+            getcwd() . '/public/themes/default/view',
         ],
     ],
     'service_manager' => [
