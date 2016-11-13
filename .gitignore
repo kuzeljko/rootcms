@@ -7,3 +7,4 @@ phpcs.xml
 phpunit.xml.dist
 composer      
 nbproject/
+db.sql
